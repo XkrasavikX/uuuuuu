@@ -1,2 +1,2 @@
-# uuuuuu
-uuuu
+# sample vk bot
+git clone https://github.com/XkrasavikX/uuuuuu
