@@ -31,10 +31,14 @@ else:
     mailing('Бот запущен на время')
 
 while True:
-    for event in longpoll.listen():
-        if event.type == VkBotEventType.MESSAGE_NEW:
-            msg = event.obj.text.lower()
-            if not event.obj.from_me:
-                print(g + time() + '[i] Новое сообщение от пользователя @id' + str(event.obj.peer_id))
-                logging.info(time() + "New message from @id" + str(event.obj.peer_id))
-                commands(event, msg)
+    try:
+        for event in longpoll.listen():
+            if event.type == VkBotEventType.MESSAGE_NEW:
+                msg = event.obj.text.lower()
+                if not event.obj.from_me:
+                    print(g + time() + '[i] Новое сообщение от пользователя @id' + str(event.obj.peer_id))
+                    logging.info(time() + "New message from @id" + str(event.obj.peer_id))
+                    commands(event, msg)
+    except:
+        continue
+        raise
